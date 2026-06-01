@@ -1,8 +1,7 @@
-import React from "react";
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
-  return <Navigate to="/category/1"></Navigate>;
+  return <Navigate to="/category/1" />;
 };
 
 export default Home;

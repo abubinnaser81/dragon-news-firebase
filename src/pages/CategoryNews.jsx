@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import NewsCard from "../components/NewsCard";
 
 const CategoryNews = () => {
-  const { id } = useParams(); //string
+  const { id } = useParams();
   const data = useLoaderData();
+  const loadedNews = Array.isArray(data) ? data : data?.news || [];
 
   const [categoryNews, setCategoryNews] = useState([]);
 
   useEffect(() => {
-    if (id == "0") {
-      setCategoryNews(data);
-    } else if (id == "1") {
-      const filteredNews = data.filter(
-        (news) => news.others.is_today_pick == true
+    if (id === "0") {
+      setCategoryNews(loadedNews);
+    } else if (id === "1") {
+      const filteredNews = loadedNews.filter(
+        (news) => news.others?.is_today_pick === true
       );
-
       setCategoryNews(filteredNews);
     } else {
-      const filteredNews = data.filter((news) => news.category_id == id);
+      const filteredNews = loadedNews.filter((news) => news.category_id === id);
       setCategoryNews(filteredNews);
     }
-  }, [id, data]);
-
-  // console.log(id, data);
+  }, [id, loadedNews]);
 
   return (
     <div>
@@ -34,7 +32,7 @@ const CategoryNews = () => {
 
       <div className="grid grid-cols-1 gap-5">
         {categoryNews.map((news) => (
-          <NewsCard key={news.id} news={news}></NewsCard>
+          <NewsCard key={news.id || news._id} news={news} />
         ))}
       </div>
     </div>
