@@ -16,7 +16,7 @@ const Login = () => {
           <div><a className="link link-hover">Forgot password?</a></div>
           
           <button className="btn btn-neutral mt-4">Login</button>
-          <p className="font-semibold text-center">
+          <p className="font-semibold text-center pt-4">
             Dont't have an account? <NavLink className="text-secondary" to="/auth/register" className="link link-hover">
               <span className=" text-secondary decoration-underline">Register</span>
             </NavLink>
