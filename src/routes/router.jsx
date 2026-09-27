@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-
+import {Outlet} from "react-router-dom";  
 const router = createBrowserRouter([
   {
     path: "/",
